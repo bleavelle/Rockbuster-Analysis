@@ -16,7 +16,7 @@ I was given a list of questions that hypothetical executives and managers at Roc
 
 Sample queries can be found in the files of this repository.
 
-Since most if this data exist on different tables, the main difficulty was in finding the correct keys to use to join and filter those tables correctly. 
+Since most if this data exists on different tables, the main difficulty was in finding the correct keys to use to join and filter those tables correctly. 
 
 In the end, the data we retrieved and organized was exported into CSV files and further visualized in Tableau. Here is a link to my [final project](https://public.tableau.com/app/profile/bryan7956/viz/RockbusterAnalysis_16577248885990/Story1?publish=yes), and here is a picture of the database ERD for reference:
 
