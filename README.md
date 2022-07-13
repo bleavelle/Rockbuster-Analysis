@@ -1,5 +1,5 @@
 # Rockbuster-Analysis
-A bootcamp project that required writing SQL queries to join tables and retrieve required data, then visualizing the data in Tableau Public.
+*A bootcamp project that required writing SQL queries to join tables and retrieve required data, then visualizing the data in Tableau Public.*
 ## Project Description
 For this project, I was provided a relational database and used PgAdmin 4 from Postgres to query this database. Here is a short list of some of the things I learned while completeing this project:
 - How to use DBVisualizer to to build an entity relationship diagram
