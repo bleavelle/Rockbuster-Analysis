@@ -1,0 +1,54 @@
+--Simple Descriptive Statistics Query--
+
+SELECT AVG(rental_rate) AS average_rental_rate
+	, MAX(rental_rate) AS maximum_rental_rate
+	, MIN(rental_rate) AS minimum_rental_rate
+	, MODE() WITHIN GROUP (ORDER BY rental_rate)
+	AS most_frequent_rental_rate
+FROM film
+
+--Finding Top five customers with multipke joins and groupings--
+
+SELECT B.customer_id AS customer_id
+	, B.first_name
+	, B.last_name
+	, D.city
+	, E.country
+	, SUM(amount) AS total_amount_paid
+FROM payment A
+INNER JOIN customer B ON A.customer_id = B.customer_id
+INNER JOIN address C ON B.address_id = C.address_id
+INNER JOIN city D ON C.city_id = D.city_id
+INNER JOIN country E ON D.country_id = E.country_id
+WHERE D.country_id = 44 OR D.country_id = 23 OR D.country_id = 103 
+OR D.country_id = 50 OR D.country_id = 60 OR D.country_id = 60
+OR D.country_id = 15 OR D.country_id = 80 OR D.country_id = 75 OR D.country_id = 97 
+OR D.country_id = 45
+GROUP BY D.city, A.customer_id, E.country, B.customer_id
+Order by total_amount_paid DESC, city, customer_id
+LIMIT 5
+
+-- Using a CTE to find average payments of top customers--
+
+WITH top_cust_cte (cust, total_paid, city, top_country) AS
+	(SELECT DISTINCT(B.customer_id) AS cust
+			, SUM(A.amount) AS total_paid
+			, D.city AS city
+			, E.country AS top_country
+		FROM customer B
+
+		INNER JOIN payment A ON B.customer_id = A.customer_id
+		INNER JOIN address C ON B.address_id = C.address_id
+		INNER JOIN city D ON C.city_id = D.city_id
+		INNER JOIN country E ON d.country_id = e.country_id
+		WHERE D.country_id = 44 OR D.country_id = 23 OR D.country_id = 103 
+		OR D.country_id = 50 OR D.country_id = 60 OR D.country_id = 60
+		OR D.country_id = 15 OR D.country_id = 80 OR D.country_id = 75 OR D.country_id = 97 
+		OR D.country_id = 45
+
+		GROUP BY cust, city, top_country
+		ORDER BY total_paid DESC, cust
+		LIMIT 10)
+		
+SELECT cast(avg(tcc.total_paid) as int)
+FROM top_cust_cte tcc
