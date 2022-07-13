@@ -6,6 +6,7 @@ For this project, we were provided a relational database and used PgAdmin 4 from
 - The effects of constraints on how data can be input into a relational database
 - Grouping and cleaning data in SQL
 - Finding and displaying max, min, averages of data using SQL queries
-- Write relatively complex queries involving joins, subqueries and Common Table Expressions.
+- Writing relatively complex queries involving joins, subqueries and Common Table Expressions.
 
 
+![ERD](https://user-images.githubusercontent.com/72717410/178783481-84c635ae-bf77-4124-a536-326c3c2b5b68.jpg)
